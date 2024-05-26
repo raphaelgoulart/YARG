@@ -263,7 +263,7 @@ namespace YARG.Gameplay.Player
                 _rangeShiftIndex++;
 
                 YargLogger.LogFormatDebug("Range Shifting from UpdatePhrases to {0} over {1}", rangeShift.Key, rangeShift.TimeLength);
-                RangeShiftTo(rangeShift.Key, rangeShift.TimeLength);
+                RangeShiftTo(rangeShift.Key, 0.250f);
             }
         }
 
@@ -289,6 +289,10 @@ namespace YARG.Gameplay.Player
                 int key = (int) action;
                 _trackOverlay.SetKeyHeld(key, input.Button);
                 _keysArray.SetPressed(key, input.Button);
+                if (input.Button)
+                {
+                    GlobalAudioHandler.PlaySoundEffect(SfxSample.Piano_0 + key);
+                }
             }
 
             // Ignore SP in practice mode
