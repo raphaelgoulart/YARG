@@ -10,6 +10,7 @@ using YARG.Core.Engine.ProKeys.Engines;
 using YARG.Core.Input;
 using YARG.Core.Logging;
 using YARG.Gameplay.Visuals;
+using YARG.Settings;
 
 namespace YARG.Gameplay.Player
 {
@@ -289,7 +290,7 @@ namespace YARG.Gameplay.Player
                 int key = (int) action;
                 _trackOverlay.SetKeyHeld(key, input.Button);
                 _keysArray.SetPressed(key, input.Button);
-                if (input.Button)
+                if (input.Button && SettingsManager.Settings.ProKeysNoteSound.Value)
                 {
                     GlobalAudioHandler.PlaySoundEffect(SfxSample.Piano_0 + key);
                 }

@@ -141,6 +141,8 @@ namespace YARG.Settings
             public ToggleSetting UseChipmunkSpeed { get; } = new(false, UseChipmunkSpeedChange);
 
             public ToggleSetting ApplyVolumesInMusicLibrary { get; } = new(true);
+            
+            public ToggleSetting ProKeysNoteSound { get; } = new(false);
 
             #endregion
 

@@ -1712,6 +1712,10 @@ MonoBehaviour:
     m_Localized: Fat Finger Window
     m_Metadata:
       m_Items: []
+  - m_Id: 155172858732437504
+    m_Localized: Pro Keys Note Sound
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

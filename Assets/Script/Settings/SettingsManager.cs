@@ -87,6 +87,7 @@ namespace YARG.Settings
                 // nameof(Settings.ReverbInStarpower),
                 nameof(Settings.UseChipmunkSpeed),
                 nameof(Settings.ApplyVolumesInMusicLibrary),
+                nameof(Settings.ProKeysNoteSound),
             },
             new MetadataTab("Graphics", icon: "Display", new TrackPreviewBuilder())
             {

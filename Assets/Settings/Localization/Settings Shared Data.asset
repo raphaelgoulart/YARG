@@ -1459,6 +1459,10 @@ MonoBehaviour:
     m_Key: Tab.Sound
     m_Metadata:
       m_Items: []
+  - m_Id: 155172858732437504
+    m_Key: Setting.ProKeysNoteSound
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
