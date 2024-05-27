@@ -174,6 +174,7 @@ namespace YARG.Gameplay.Player
             if (GameManager.Paused) return;
 
             (NotePool.GetByKey(note) as ProKeysNoteElement)?.HitNote();
+            _keysArray.PlayHitAnimation(note.Key);
         }
 
         private void OnOverhit(int key)
@@ -264,7 +265,9 @@ namespace YARG.Gameplay.Player
                 _rangeShiftIndex++;
 
                 YargLogger.LogFormatDebug("Range Shifting from UpdatePhrases to {0} over {1}", rangeShift.Key, rangeShift.TimeLength);
-                RangeShiftTo(rangeShift.Key, 0.250f);
+
+                const double rangeShiftTime = 0.25;
+                RangeShiftTo(rangeShift.Key, rangeShiftTime);
             }
         }
 
