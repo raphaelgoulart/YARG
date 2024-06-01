@@ -107,6 +107,8 @@ namespace YARG.Gameplay.Player
             engine.OnStarPowerPhraseHit += OnStarPowerPhraseHit;
             engine.OnStarPowerStatus += OnStarPowerStatus;
 
+            engine.OnKeyStateChange += OnKeyStateChange;
+
             return engine;
         }
 
@@ -194,6 +196,16 @@ namespace YARG.Gameplay.Player
             OnOverstrum();
 
             // do overhit visuals
+        }
+
+        private void OnKeyStateChange(int key, bool isPressed)
+        {
+            _trackOverlay.SetKeyHeld(key, isPressed);
+            _keysArray.SetPressed(key, isPressed);
+            if (isPressed && SettingsManager.Settings.ProKeysNoteSound.Value)
+            {
+                GlobalAudioHandler.PlaySoundEffect(SfxSample.Piano_0 + key);
+            }
         }
 
         private void RangeShiftTo(int noteIndex, double timeLength)
@@ -320,16 +332,6 @@ namespace YARG.Gameplay.Player
         protected override bool InterceptInput(ref GameInput input)
         {
             var action = input.GetAction<ProKeysAction>();
-            if (action != ProKeysAction.StarPower && action != ProKeysAction.TouchEffects)
-            {
-                int key = (int) action;
-                _trackOverlay.SetKeyHeld(key, input.Button);
-                _keysArray.SetPressed(key, input.Button);
-                if (input.Button && SettingsManager.Settings.ProKeysNoteSound.Value)
-                {
-                    GlobalAudioHandler.PlaySoundEffect(SfxSample.Piano_0 + key);
-                }
-            }
 
             // Ignore SP in practice mode
             if (action == ProKeysAction.StarPower && GameManager.IsPractice) return true;
